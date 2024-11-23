@@ -150,7 +150,7 @@ export default function MainPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#F67A2C]">
         <AnimatePresence>
           {showWelcome && (
             <motion.div

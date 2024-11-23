@@ -4,6 +4,9 @@ import { toast } from "sonner";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
+// Import the Logo component
+import { Logo } from "../components/Logo";
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -68,28 +71,36 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F67A2C] flex flex-col items-center justify-center p-4 relative">
+      {/* Logo */}
+      <div className="absolute top-8 left-8">
+        {/* Replace static image with Logo component */}
+        <Logo className="w-48 h-auto" />
+      </div>
+
+      {/* Lets Audit Text */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-8 w-full"
+      >
+        <h1 className="text-5xl font-extrabold text-white tracking-tight text-left">
+          Lets Audit.
+        </h1>
+      </motion.div>
+
+      {/* Login Form */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8"
+        className="w-full max-w-md bg-white rounded-3xl shadow-lg p-10 space-y-8"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
-            Process Audit Tool
-          </h1>
-        </motion.div>
-
         <form
           onSubmit={!isEmailVerified ? handleEmailVerification : handleLogin}
           className="space-y-6"
         >
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-lg font-medium text-gray-700 mb-5">
               Email Address
             </label>
             <div className="relative">
@@ -99,7 +110,7 @@ export default function LoginPage() {
                 onChange={e => setEmail(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isEmailVerified}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pl-10"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#F67A2C] focus:border-transparent transition-all pl-10"
                 placeholder="Enter your email"
               />
               <Mail className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
@@ -109,7 +120,7 @@ export default function LoginPage() {
           {!isEmailVerified && (
             <motion.button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 bg-[#F67A2C] text-white py-3 rounded-lg hover:bg-[#F67A2C]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={verifying}
@@ -126,7 +137,7 @@ export default function LoginPage() {
               className="space-y-6"
             >
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-lg font-medium text-gray-700 mb-2">
                   Password
                 </label>
                 <div className="relative">
@@ -135,7 +146,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pl-10"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#F67A2C] focus:border-transparent transition-all pl-10"
                     placeholder="Enter your password"
                   />
                   <Lock className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
@@ -144,7 +155,7 @@ export default function LoginPage() {
 
               <motion.button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full bg-[#F67A2C] text-white py-3 rounded-lg hover:bg-[#F67A2C]/90 transition-colors"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

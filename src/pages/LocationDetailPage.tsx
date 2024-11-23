@@ -239,7 +239,7 @@ export default function LocationDetailPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#F67A2C]">
         <header className="bg-white shadow-sm mb-1">
           <div className="w-full px-2 py-2">
             <div className="flex items-center justify-between mb-1">
